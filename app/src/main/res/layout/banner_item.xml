@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    >
+<com.stx.xhb.xbanner.XBanner
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/x_banner"
+    android:layout_width="@dimen/dp_280"
+    android:layout_height="@dimen/dp_150">
+</com.stx.xhb.xbanner.XBanner>
+</LinearLayout>

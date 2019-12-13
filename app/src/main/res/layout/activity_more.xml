@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1c2243"
+    tools:context=".activtiy.more.MoreActivity">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/buck"
+            android:src="@drawable/jian"
+            android:layout_margin="@dimen/sp_20"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20" />
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp_30"
+                android:layout_centerVertical="true"
+                android:layout_width="@dimen/dp_250"
+                android:layout_height="@dimen/dp_50"
+                android:background="@drawable/seach_shleps"
+                android:hint=""
+                />
+        </RelativeLayout>
+    </LinearLayout>
+<android.support.design.widget.TabLayout
+    android:layout_weight="1"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:tabTextColor="#FFFFFF"
+    android:id="@+id/tab_more"
+    >
+</android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_more"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></android.support.v4.view.ViewPager>
+</LinearLayout>
