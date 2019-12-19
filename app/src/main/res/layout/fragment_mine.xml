@@ -43,7 +43,7 @@
             android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_70">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/iv_headPic"
                 android:layout_width="@dimen/dp_70"
                 android:layout_height="@dimen/dp_70" />

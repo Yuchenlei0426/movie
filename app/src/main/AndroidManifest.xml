@@ -5,18 +5,20 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.bawei.movie.utils.App"
+        android:name=".utils.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.bw.movie.activtiy.more.MoreActivity"></activity>
-        <activity android:name="com.bw.movie.activtiy.RegisterActivity" />
-        <activity android:name="com.bw.movie.activtiy.LoginActivity" />
-        <activity android:name="com.bw.movie.activtiy.Main2Activity" />
-        <activity android:name="com.bw.movie.activtiy.MainActivity">
+        <activity android:name=".activtiy.findregion.FindRegionActivity"></activity>
+        <activity android:name=".activtiy.moviedetails.DetailsActivity" />
+        <activity android:name=".activtiy.move.MoreActivity" />
+        <activity android:name=".activtiy.RegisterActivity" />
+        <activity android:name=".activtiy.LoginActivity" />
+        <activity android:name=".activtiy.Main2Activity" />
+        <activity android:name=".activtiy.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
