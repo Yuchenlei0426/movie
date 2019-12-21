@@ -7,6 +7,8 @@ import com.bw.movie.bean.findHotMovieList.HomeShow;
 import com.bw.movie.bean.findReleaseMovieList.ReleaseShow;
 import com.bw.movie.bean.findregion.FindRegionShow;
 import com.bw.movie.bean.loginbean.LoginShow;
+import com.bw.movie.bean.nearbycinemas.NearbyCinemas;
+import com.bw.movie.bean.recommendcinemas.RecommendCinemasShow;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -51,4 +53,11 @@ public interface IRequest {
 //查询区域列表
     @GET("tool/v2/findRegionList")
     Observable<FindRegionShow> findRegionList();
+
+//查询推荐影院信息
+    @GET("cinema/v1/findRecommendCinemas")
+    Observable<RecommendCinemasShow> findRecommendCinemas(@Query("page")Integer page, @Query("count") Integer count);
+
+    @GET("cinema/v1/findNearbyCinemas")
+    Observable<NearbyCinemas> findNearbyCinemas(@Query("longitude")String longitude,@Query("latitude") String latitude,@Query("page")Integer page,@Query("count") Integer count);
 }

@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#1c2243"
+    android:orientation="vertical"
     tools:context=".fragment.ShowFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/dp_19"
+                android:layout_height="@dimen/dp_24"
+                android:src="@drawable/icon_location"
+                android:id="@+id/positioning"
+                />
+            <TextView
+                android:id="@+id/tv"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:text="请定位"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <EditText
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="@dimen/dp_230"
+            android:layout_height="@dimen/dp_30"
+            android:id="@+id/et_search"
+            android:background="@drawable/seach_shleps"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_24"
+            />
+    </RelativeLayout>
+    <com.google.android.material.tabs.TabLayout
+        app:tabTextColor="#FFFFFF"
+        android:layout_weight="1"
+        android:id="@+id/tab_cinema"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_cinema"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </androidx.viewpager.widget.ViewPager>
+</LinearLayout>
