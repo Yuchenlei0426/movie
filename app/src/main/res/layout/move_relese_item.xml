@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorBlue"
+    >
     <LinearLayout
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -19,21 +21,21 @@
             <TextView
                 android:id="@+id/tv_move_re_name"
                 android:layout_margin="@dimen/dp_10"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_20"
                 android:layout_width="@dimen/dp_84"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_move_re_director"
                 android:layout_margin="@dimen/dp_10"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_15"
                 android:layout_width="@dimen/dp_60"
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/tv_move_re_starring"
                 android:layout_margin="@dimen/dp_10"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/sp_15"
                 android:layout_width="@dimen/dp_148"
                 android:layout_height="wrap_content"
@@ -55,7 +57,7 @@
                 android:layout_width="@dimen/dp_45"
                 android:layout_height="@dimen/dp_20"
                 android:text="购买"
-                android:background="#ff1a67"
+                android:background="@drawable/se"
                 />
         </RelativeLayout>
     </LinearLayout>

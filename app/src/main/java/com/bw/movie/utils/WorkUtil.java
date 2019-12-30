@@ -1,7 +1,5 @@
 package com.bw.movie.utils;
 
-import java.util.concurrent.TimeUnit;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -19,9 +17,6 @@ public class WorkUtil {
     private WorkUtil() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(15, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.MILLISECONDS)
                 .addInterceptor(interceptor)
                 .build();
         retrofit = new Retrofit.Builder().client(client)

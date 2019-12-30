@@ -15,6 +15,7 @@ import com.bw.movie.bean.recommendcinemas.RecommendResult;
 import com.bw.movie.prentent.RecommendCinemasPreantent;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,6 +29,9 @@ public class RecommendFragment extends BaseFragment {
     @BindView(R.id.recommend)
     XRecyclerView recommend;
     private Unbinder bind;
+    int page=1;
+    private ArrayList<RecommendResult> results =new ArrayList<>();
+
 
     @Override
     protected int onLayout() {
@@ -42,19 +46,24 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     protected void onData() {
-        RecommendCinemasPreantent recommendCinemasPreantent = new RecommendCinemasPreantent(new RecommendCall());
-        recommendCinemasPreantent.getData(1,10);
+        RecommendCinemasPreantent  recommendCinemasPreantent = new RecommendCinemasPreantent(new RecommendCall());
+        recommendCinemasPreantent.getData(page,10);
+        recommend.setLoadingMoreEnabled(true);
         recommend.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
+                page++;
+                recommend.refreshComplete();
             }
 
             @Override
             public void onLoadMore() {
+                page=1;
+                recommend.refreshComplete();
 
             }
         });
+
     }
 
     @Override
@@ -72,6 +81,7 @@ public class RecommendFragment extends BaseFragment {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
             recommend.setLayoutManager(linearLayoutManager);
             recommend.setAdapter(recommendAdper);
+
         }
 
         @Override

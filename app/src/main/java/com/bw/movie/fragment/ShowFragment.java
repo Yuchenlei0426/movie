@@ -89,15 +89,7 @@ public class ShowFragment extends BaseFragment {
         tabCinema.getTabAt(0).setText("推荐影院");
         tabCinema.getTabAt(1).setText("附近影院");
         tabCinema.getTabAt(2).setText("海淀区");
-
-
-//        SharedPreferences sp = getActivity().getSharedPreferences("movie",MODE_PRIVATE );
-//        sp = getActivity().getSharedPreferences("position", MODE_PRIVATE);
-//        edit = sp.edit();
-//
-//        if (sp != null) {
-//            city.setText(sp.getString("district", "") + "");
-//        }
+//        vpCinema.set
         positioning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,7 +135,7 @@ public class ShowFragment extends BaseFragment {
                             double longitude = amapLocation.getLongitude();
                             String city = amapLocation.getCity();
                             getEvBust(latitude,longitude);
-                            Toast.makeText(context, latitude+"", Toast.LENGTH_SHORT).show();
+
                             //获取当前定位结果来源，如网络定位结果，详见定位类型表
                             Log.i("定位类型", amapLocation.getLocationType() + "");
                             Log.e("获取纬度", latitude + "");

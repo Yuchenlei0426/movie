@@ -2,8 +2,10 @@ package com.bw.movie.utils;
 
 import com.bw.movie.bean.banner.BannerBean;
 import com.bw.movie.bean.detail.DetailShow;
+import com.bw.movie.bean.findCinemaByRegion.CinemaByRegion;
 import com.bw.movie.bean.findComingSoonMovieList.ComingSoonShow;
 import com.bw.movie.bean.findHotMovieList.HomeShow;
+import com.bw.movie.bean.findMovieByKeyword.ByKeywordShow;
 import com.bw.movie.bean.findReleaseMovieList.ReleaseShow;
 import com.bw.movie.bean.findregion.FindRegionShow;
 import com.bw.movie.bean.loginbean.LoginShow;
@@ -33,31 +35,45 @@ public interface IRequest {
     //    即将上映
     @GET("movie/v2/findComingSoonMovieList")
     Observable<ComingSoonShow> findComingSoonMovieList(@Query("page") Integer page, @Query("count") Integer count);
-//登录
+
+    //登录
     @POST("user/v2/login")
     @FormUrlEncoded
-    Observable<LoginShow> login(@Field("email") String email,@Field("pwd") String pwd);
-//    注册
+    Observable<LoginShow> login(@Field("email") String email, @Field("pwd") String pwd);
+
+    //    注册
     @POST("user/v2/register")
     @FormUrlEncoded
-    Observable<LoginShow> register(@Field("nickName") String nickName,@Field("pwd") String pwd,@Field("email") String email,@Field("code") String code);
-//    获取验证码
+    Observable<LoginShow> register(@Field("nickName") String nickName, @Field("pwd") String pwd, @Field("email") String email, @Field("code") String code);
+
+    //    获取验证码
     @POST("user/v2/sendOutEmailCode")
     @FormUrlEncoded
-    Observable<LoginShow>  sendOutEmailCode(@Field("email") String email);
+    Observable<LoginShow> sendOutEmailCode(@Field("email") String email);
 
-//    详情
+    //    详情
     @GET("movie/v2/findMoviesDetail")
     Observable<DetailShow> findMoviesDetail(@Query("movieId") Integer movieId);
 
-//查询区域列表
+    //查询区域列表
     @GET("tool/v2/findRegionList")
     Observable<FindRegionShow> findRegionList();
 
-//查询推荐影院信息
-    @GET("cinema/v1/findRecommendCinemas")
-    Observable<RecommendCinemasShow> findRecommendCinemas(@Query("page")Integer page, @Query("count") Integer count);
+    //根据区域查询影院
+    @GET("cinema/v2/findCinemaByRegion")
+    Observable<CinemaByRegion> findCinemaByRegion(@Query("regionId") Integer regionId);
 
+
+    //查询推荐影院信息
+    @GET("cinema/v1/findRecommendCinemas")
+    Observable<RecommendCinemasShow> findRecommendCinemas(@Query("page") Integer page, @Query("count") Integer count);
+
+
+    //    查询附近影院
     @GET("cinema/v1/findNearbyCinemas")
-    Observable<NearbyCinemas> findNearbyCinemas(@Query("longitude")String longitude,@Query("latitude") String latitude,@Query("page")Integer page,@Query("count") Integer count);
+    Observable<NearbyCinemas> findNearbyCinemas(@Query("longitude") double longitude, @Query("latitude") double latitude, @Query("page") Integer page, @Query("count") Integer count);
+
+    @GET("movie/v2/findMovieByKeyword")
+    Observable<ByKeywordShow> findMovieByKeyword(@Query("keyword") String keyword, @Query("page")Integer page, @Query("count") Integer count);
+
 }

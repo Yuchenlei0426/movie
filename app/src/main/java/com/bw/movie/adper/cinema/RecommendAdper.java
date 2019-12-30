@@ -20,6 +20,10 @@ public class RecommendAdper extends RecyclerView.Adapter<RecommendAdper.Recommen
         this.result=result;
     }
 
+    public List<RecommendResult> getResult() {
+        return result;
+    }
+
     @NonNull
     @Override
     public RecommendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

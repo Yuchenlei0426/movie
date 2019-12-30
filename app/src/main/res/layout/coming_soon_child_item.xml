@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dp_20"
+    android:background="@color/colorBlue"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -62,7 +63,7 @@
         android:layout_width="@dimen/dp_45"
         android:layout_height="@dimen/dp_20"
         android:textColor="#ffffff"
-        android:background="#ff1a67"
+        android:background="@drawable/se"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:text="预约" />

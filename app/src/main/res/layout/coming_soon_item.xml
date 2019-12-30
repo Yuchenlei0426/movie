@@ -43,12 +43,9 @@
                 android:textSize="@dimen/sp_15" />
         </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_coming_soon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 </LinearLayout>

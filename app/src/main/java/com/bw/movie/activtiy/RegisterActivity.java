@@ -1,6 +1,5 @@
 package com.bw.movie.activtiy;
 
-import android.content.Intent;
 import android.os.CountDownTimer;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -10,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.base.BaseActivity;
@@ -94,9 +94,14 @@ public class RegisterActivity extends BaseActivity {
                 String reEmail = etReEmail.getText().toString();
                 String rePwd = etRePwd.getText().toString();
                 String code = etCode.getText().toString();
-                String encode = Base64.encode(rePwd.getBytes());
-                String encrypt = EncryptUtil.encrypt(encode);
-                registerPrantent.getData(nickName,encrypt, reEmail, code);
+                if (code!=null) {
+                    Toast.makeText(this, "验证码不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    String encode = Base64.encode(rePwd.getBytes());
+                    String encrypt = EncryptUtil.encrypt(encode);
+                    registerPrantent.getData(nickName,encrypt, reEmail, code);
+                }
+
                 break;
         }
     }
@@ -104,14 +109,13 @@ public class RegisterActivity extends BaseActivity {
     private class Register implements IBackCall<LoginShow> {
         @Override
         public void onSuccess(LoginShow homeShow) {
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
+            Log.e(TAG, "onSuccess: "+homeShow.getMessage());
             finish();
         }
 
         @Override
         public void onFail(String mes) {
-            Log.i(TAG, "onFail: "+mes);
+            Log.e(TAG, "onFail: "+mes);
 
         }
     }
@@ -119,14 +123,16 @@ public class RegisterActivity extends BaseActivity {
     private class CodeCall implements IBackCall<LoginShow> {
         @Override
         public void onSuccess(LoginShow homeShow) {
+            Log.e(TAG, "onSuccess: "+homeShow.getMessage());
 
         }
 
         @Override
         public void onFail(String mes) {
-            Log.i(TAG, "onFail: "+mes);
+            Log.e(TAG, "onFail: "+mes);
         }
     }
+
 
 
     public class MyCountDownTimer extends CountDownTimer {
@@ -139,7 +145,7 @@ public class RegisterActivity extends BaseActivity {
         public void onTick(long l) {
             //防止计时过程中重复点击
             butCode.setClickable(false);
-            butCode.setText(l/1000+"秒");
+            butCode.setText(l/500+"秒");
 
         }
 

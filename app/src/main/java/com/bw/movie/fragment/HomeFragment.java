@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activtiy.move.MoreActivity;
+import com.bw.movie.activtiy.search.SearchActivity;
 import com.bw.movie.adper.ComingSoonAdper;
 import com.bw.movie.adper.HotItemAdper;
 import com.bw.movie.adper.ReleaseAdper;
@@ -67,6 +68,8 @@ public class HomeFragment extends BaseFragment {
     TextView reMove2;
     @BindView(R.id.rv_coming_soon)
     RecyclerView rvComingSoon;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
 
     @Override
     protected int onLayout() {
@@ -96,7 +99,7 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.re_move1, R.id.re_move2, R.id.re_move3})
+    @OnClick({R.id.re_move1, R.id.re_move2, R.id.re_move3,R.id.iv_search})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.re_move1:
@@ -108,16 +111,19 @@ public class HomeFragment extends BaseFragment {
                 Intent intent2 = new Intent(getActivity(), MoreActivity.class);
                 intent2.putExtra("fragment_flag", 3);
                 startActivity(intent2);
-                ;break;
+                ;
+                break;
             case R.id.re_move3:
                 Intent intent3 = new Intent(getActivity(), MoreActivity.class);
                 intent3.putExtra("fragment_flag", 3);
                 startActivity(intent3);
-                ; break;
+                ;
+                case R.id.iv_search:
+                    Intent intent = new Intent(getActivity(), SearchActivity.class);
+                    startActivity(intent);
+                    break;
         }
     }
-
-
 
     //banner
     private class BannerCall implements IBackCall<BannerBean> {
