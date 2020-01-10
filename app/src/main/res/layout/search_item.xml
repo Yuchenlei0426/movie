@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dp_312"
     android:layout_height="@dimen/dp_121"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBlue"
     android:layout_margin="@dimen/dp_10"
     android:orientation="horizontal">
 
     <com.facebook.drawee.view.SimpleDraweeView
+        app:placeholderImage="@drawable/time"
         android:id="@+id/sv_imageUrl"
         android:layout_width="@dimen/dp_84"
         android:layout_height="@dimen/dp_101" />

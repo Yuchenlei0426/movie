@@ -2,6 +2,7 @@ package com.bw.movie.prentent.area;
 
 import com.bw.movie.base.IBackCall;
 import com.bw.movie.bean.findCinemaByRegion.CinemaByRegion;
+import com.bw.movie.bean.findHotMovieList.HomeShow;
 import com.bw.movie.utils.IRequest;
 import com.bw.movie.utils.WorkUtil;
 
@@ -22,14 +23,14 @@ public class AreaPrantent {
         iRequest.findCinemaByRegion((Integer)args[0])
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CinemaByRegion>() {
+                .subscribe(new Observer<HomeShow>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(CinemaByRegion homeShow) {
+                    public void onNext(HomeShow homeShow) {
                         String status = homeShow.getStatus();
                         if (status.equals("0000")) {
                             iBackCall.onSuccess(homeShow);

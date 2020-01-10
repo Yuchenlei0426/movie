@@ -18,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activtiy.search.SearchActivity"></activity>
+        <activity android:name=".activtiy.seatselection.SeatselectionActivity"></activity>
+        <activity android:name=".activtiy.schedule.ScheduleActivity" />
+        <activity android:name=".activtiy.CinemaDetailsActivity" />
+        <activity android:name=".activtiy.search.SearchActivity" />
         <activity android:name=".activtiy.findregion.FindRegionActivity" />
         <activity android:name=".activtiy.moviedetails.DetailsActivity" />
         <activity android:name=".activtiy.move.MoreActivity" />

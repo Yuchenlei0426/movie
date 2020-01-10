@@ -42,10 +42,10 @@ public class ReleaseAdper extends RecyclerView.Adapter<ReleaseAdper.ReleaseViewH
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetailsActivity.class);
-                MovieBus movieBus = new MovieBus();
+
                 int movieId = releaseResult.get(i).getMovieId();
-                movieBus.setMovieId(movieId);
-                EventBus.getDefault().postSticky(movieBus);
+                String name = releaseResult.get(i).getName();
+                EventBus.getDefault().postSticky(new MovieBus(movieId,name));
                 v.getContext().startActivity(intent);
 
             }

@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 public  abstract class BaseFragment extends Fragment {
+//    初始化  视图初始化
+    private boolean isViewInitialization;
+    private boolean isVisible;
+    private boolean isInitialization;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -15,6 +19,7 @@ public  abstract class BaseFragment extends Fragment {
         View view = inflater.inflate(onLayout(), container, false);
         onView(view);
         onData();
+
         return view;
     }
 
@@ -23,4 +28,10 @@ public  abstract class BaseFragment extends Fragment {
     protected abstract void onView(View view);
 
     protected abstract void onData();
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+    }
 }

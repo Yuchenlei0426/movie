@@ -10,12 +10,37 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
+        android:layout_margin="@dimen/sp_20"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iv_Positioning"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_location"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_10"
+                    android:id="@+id/tv_city"
+                    android:text="未定位"
+                    android:textColor="@color/colorWhite"
+                    />
+            </LinearLayout>
             <ImageView
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="@dimen/dp_20"
@@ -24,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_search"
                 android:id="@+id/iv_search"
+                android:layout_centerVertical="true"
                 />
         </RelativeLayout>
 
@@ -44,7 +70,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="@dimen/dp_360"
+                android:layout_width="@dimen/dp_320"
                 android:layout_height="@dimen/dp_38"
                 android:background="#1c2243">
 
@@ -90,7 +116,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="@dimen/dp_360"
+                android:layout_width="@dimen/dp_320"
                 android:layout_height="@dimen/dp_38"
                 android:background="#1c2243">
 
@@ -136,7 +162,7 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="@dimen/dp_360"
+                android:layout_width="@dimen/dp_320"
                 android:layout_height="@dimen/dp_38"
                 android:background="#1c2243">
 

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/dp_20"
     android:background="@color/colorBlue"
     android:orientation="vertical">
@@ -17,6 +18,7 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="@dimen/dp_96"
                 android:layout_height="@dimen/dp_120"
+                app:placeholderImage="@drawable/time"
                 android:id="@+id/iv_re_imageUrl"
                 />
             <TextView
@@ -44,6 +46,7 @@
             android:layout_gravity="center" />
 
         <Button
+            android:textColor="@color/colorWhite"
             android:layout_width="@dimen/dp_45"
             android:layout_height="@dimen/dp_20"
             android:background="@drawable/se"

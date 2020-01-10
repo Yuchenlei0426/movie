@@ -54,10 +54,11 @@ public class MoreHotFragment extends BaseFragment {
     }
 
 
-    private class MoveHotCall implements IBackCall<HomeShow> {
+    private class MoveHotCall implements IBackCall<HomeShow<List<MovieResult>>> {
+
 
         @Override
-        public void onSuccess(HomeShow homeShow) {
+        public void onSuccess(HomeShow<List<MovieResult>> homeShow) {
             List<MovieResult> result = homeShow.getResult();
             MoveHotAdper moveHotAdper = new MoveHotAdper();
             moveHotAdper.addAll(result);

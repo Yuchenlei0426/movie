@@ -2,18 +2,18 @@ package com.bw.movie.bean.findHotMovieList;
 
 import java.util.List;
 
-public class HomeShow {
-    private List<MovieResult> result ;
+public class HomeShow<T> {
+    private T result ;
 
     private String message;
 
     private String status;
 
-    public List<MovieResult> getResult() {
+    public T getResult() {
         return result;
     }
 
-    public void setResult(List<MovieResult> result) {
+    public void setResult(T result) {
         this.result = result;
     }
 

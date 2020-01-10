@@ -7,6 +7,7 @@ public class BannerShow {
 
     private int rank;
 
+
     public String getImageUrl() {
         return imageUrl;
     }

@@ -10,8 +10,8 @@ import com.bw.movie.R;
 import com.bw.movie.adper.move.MoveReleseAdper;
 import com.bw.movie.base.BaseFragment;
 import com.bw.movie.base.IBackCall;
+import com.bw.movie.bean.findHotMovieList.HomeShow;
 import com.bw.movie.bean.findReleaseMovieList.FindReleaseMovieList;
-import com.bw.movie.bean.findReleaseMovieList.ReleaseShow;
 import com.bw.movie.prentent.HomeReleasePrantent;
 
 import java.util.List;
@@ -43,15 +43,17 @@ public class MoreReleaseFragment extends BaseFragment {
         HomeReleasePrantent homeReleasePrantent = new HomeReleasePrantent(new HotCall());
         homeReleasePrantent.getData(1, 10);
     }
-    private class HotCall implements IBackCall<ReleaseShow> {
+    private class HotCall implements IBackCall<HomeShow<List<FindReleaseMovieList>>> {
+
         @Override
-        public void onSuccess(ReleaseShow homeShow) {
+        public void onSuccess(HomeShow<List<FindReleaseMovieList>> homeShow) {
             List<FindReleaseMovieList> result = homeShow.getResult();
             MoveReleseAdper moveReleseAdper = new MoveReleseAdper();
             moveReleseAdper.addAll(result);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
             rvHotMove.setLayoutManager(linearLayoutManager);
             rvHotMove.setAdapter(moveReleseAdper);
+
         }
 
         @Override

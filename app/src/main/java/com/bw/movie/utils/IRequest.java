@@ -1,16 +1,25 @@
 package com.bw.movie.utils;
 
 import com.bw.movie.bean.banner.BannerBean;
+import com.bw.movie.bean.banner.BannerShow;
+import com.bw.movie.bean.cinemadetails.CinemaDetails;
+import com.bw.movie.bean.cinemas.CinemasInfoByDate;
+import com.bw.movie.bean.datelist.DateList;
 import com.bw.movie.bean.detail.DetailShow;
 import com.bw.movie.bean.findCinemaByRegion.CinemaByRegion;
-import com.bw.movie.bean.findComingSoonMovieList.ComingSoonShow;
+import com.bw.movie.bean.findCinemaByRegion.CinemaByRegionResult;
+import com.bw.movie.bean.findComingSoonMovieList.FindComingSoonMovieList;
 import com.bw.movie.bean.findHotMovieList.HomeShow;
+import com.bw.movie.bean.findHotMovieList.MovieResult;
 import com.bw.movie.bean.findMovieByKeyword.ByKeywordShow;
-import com.bw.movie.bean.findReleaseMovieList.ReleaseShow;
+import com.bw.movie.bean.findReleaseMovieList.FindReleaseMovieList;
+import com.bw.movie.bean.findregion.FindRegionResult;
 import com.bw.movie.bean.findregion.FindRegionShow;
 import com.bw.movie.bean.loginbean.LoginShow;
 import com.bw.movie.bean.nearbycinemas.NearbyCinemas;
 import com.bw.movie.bean.recommendcinemas.RecommendCinemasShow;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -22,19 +31,19 @@ import retrofit2.http.Query;
 public interface IRequest {
     //    热门电影
     @GET("movie/v2/findHotMovieList")
-    Observable<HomeShow> findHotMovieList(@Query("page") Integer page, @Query("count") Integer count);
+    Observable<HomeShow<List<MovieResult>>> findHotMovieList(@Query("page") Integer page, @Query("count") Integer count);
 
     //    banner
     @GET("tool/v2/banner")
-    Observable<BannerBean> banner();
+    Observable<HomeShow<List<BannerShow>>> banner();
 
-    //    正在热映
+    //    正在上映
     @GET("movie/v2/findReleaseMovieList")
-    Observable<ReleaseShow> findReleaseMovieList(@Query("page") Integer page, @Query("count") Integer count);
+    Observable<HomeShow<List<FindReleaseMovieList>>> findReleaseMovieList(@Query("page") Integer page, @Query("count") Integer count);
 
     //    即将上映
     @GET("movie/v2/findComingSoonMovieList")
-    Observable<ComingSoonShow> findComingSoonMovieList(@Query("page") Integer page, @Query("count") Integer count);
+    Observable<HomeShow<List<FindComingSoonMovieList>>> findComingSoonMovieList(@Query("page") Integer page, @Query("count") Integer count);
 
     //登录
     @POST("user/v2/login")
@@ -57,11 +66,11 @@ public interface IRequest {
 
     //查询区域列表
     @GET("tool/v2/findRegionList")
-    Observable<FindRegionShow> findRegionList();
+    Observable<HomeShow<List<FindRegionResult>>> findRegionList();
 
     //根据区域查询影院
     @GET("cinema/v2/findCinemaByRegion")
-    Observable<CinemaByRegion> findCinemaByRegion(@Query("regionId") Integer regionId);
+    Observable<HomeShow<List<CinemaByRegionResult>>> findCinemaByRegion(@Query("regionId") Integer regionId);
 
 
     //查询推荐影院信息
@@ -75,5 +84,15 @@ public interface IRequest {
 
     @GET("movie/v2/findMovieByKeyword")
     Observable<ByKeywordShow> findMovieByKeyword(@Query("keyword") String keyword, @Query("page")Integer page, @Query("count") Integer count);
+//日期
+    @GET("tool/v2/findDateList")
+    Observable<HomeShow<List<String>>> findDateList();
+//    根据电影id，时间 查询播放影院信息
+    @GET("movie/v2/findCinemasInfoByDate")
+    Observable<HomeShow<List<CinemasInfoByDate>>> findCinemasInfoByDate(@Query("movieId")Integer movieId, @Query("date")String date, @Query("page")Integer page, @Query("count")Integer count);
+
+//    影院详情
+    @GET("cinema/v1/findCinemaInfo")
+    Observable<HomeShow<CinemaDetails>> findCinemaInfo(@Query("cinemaId")Integer cinemaId);
 
 }

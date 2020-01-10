@@ -1,19 +1,24 @@
-package com.bw.movie.bean.findReleaseMovieList;
+package com.bw.movie.bean.datelist;
 
 import java.util.List;
-
-public class ReleaseShow {
-    private List<FindReleaseMovieList>result ;
+/**
+ *@describe(描述)：一周的日期
+ *@data（日期）: 2020/1/9
+ *@time（时间）: 14:56
+ *@author（作者）: 于晨雷
+ **/
+public class DateList {
+    private List<String> result ;
 
     private String message;
 
     private String status;
 
-    public List<FindReleaseMovieList> getResult() {
+    public List<String> getResult() {
         return result;
     }
 
-    public void setResult(List<FindReleaseMovieList> result) {
+    public void setResult(List<String> result) {
         this.result = result;
     }
 

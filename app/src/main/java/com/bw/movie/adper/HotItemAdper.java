@@ -42,10 +42,9 @@ public class HotItemAdper extends RecyclerView.Adapter<HotItemAdper.HotViewHolde
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), DetailsActivity.class);
-                    MovieBus movieBus = new MovieBus();
                     int movieId = result.get(i).getMovieId();
-                    movieBus.setMovieId(movieId);
-                    EventBus.getDefault().postSticky(movieBus);
+                    String name = result.get(i).getName();
+                    EventBus.getDefault().postSticky(new MovieBus(movieId,name));
                     v.getContext().startActivity(intent);
 
                 }

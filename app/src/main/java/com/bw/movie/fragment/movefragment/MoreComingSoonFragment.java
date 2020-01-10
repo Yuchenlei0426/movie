@@ -9,8 +9,9 @@ import com.bw.movie.R;
 import com.bw.movie.adper.move.MoveComingAdper;
 import com.bw.movie.base.BaseFragment;
 import com.bw.movie.base.IBackCall;
-import com.bw.movie.bean.findComingSoonMovieList.ComingSoonShow;
+
 import com.bw.movie.bean.findComingSoonMovieList.FindComingSoonMovieList;
+import com.bw.movie.bean.findHotMovieList.HomeShow;
 import com.bw.movie.prentent.HomeComingSoonPrantent;
 
 import java.util.List;
@@ -52,13 +53,15 @@ public class MoreComingSoonFragment extends BaseFragment {
     }
 
 
-    private class ComingCall implements IBackCall<ComingSoonShow> {
+    private class ComingCall implements IBackCall<HomeShow<List<FindComingSoonMovieList>>> {
+
+
         @Override
-        public void onSuccess(ComingSoonShow homeShow) {
+        public void onSuccess(HomeShow<List<FindComingSoonMovieList>> homeShow) {
             List<FindComingSoonMovieList> result = homeShow.getResult();
             MoveComingAdper moveComingAdper = new MoveComingAdper();
             moveComingAdper.addAll(result);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL, false);
             rvComingSoon.setLayoutManager(linearLayoutManager);
             rvComingSoon.setAdapter(moveComingAdper);
 

@@ -15,6 +15,7 @@ import com.bw.movie.base.IBackCall;
 import com.bw.movie.bean.eventbean.AreaShow;
 import com.bw.movie.bean.findCinemaByRegion.CinemaByRegion;
 import com.bw.movie.bean.findCinemaByRegion.CinemaByRegionResult;
+import com.bw.movie.bean.findHotMovieList.HomeShow;
 import com.bw.movie.bean.findregion.FindRegionResult;
 import com.bw.movie.bean.findregion.FindRegionShow;
 import com.bw.movie.prentent.FindRegionPreantent;
@@ -49,7 +50,9 @@ public class AreaFragment extends BaseFragment {
     @Override
     protected void onView(View view) {
         unbinder = ButterKnife.bind(this, view);
-        EventBus.getDefault().register(this);
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -60,23 +63,18 @@ public class AreaFragment extends BaseFragment {
         AreaPrantent areaPrantent = new AreaPrantent(new AreaCall());
         areaPrantent.getData(1);
     }
+
     @Subscribe(sticky = true)
-    public void  show(AreaShow areaShow){
+    public void show(AreaShow areaShow) {
         int regionId = areaShow.getRegionId();
         AreaPrantent areaPrantent = new AreaPrantent(new AreaCall());
         areaPrantent.getData(regionId);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
-        EventBus.getDefault().unregister(this);
-    }
 
-    private class RegionCall implements IBackCall<FindRegionShow> {
+    private class RegionCall implements IBackCall<HomeShow<List<FindRegionResult>>> {
         @Override
-        public void onSuccess(FindRegionShow homeShow) {
+        public void onSuccess(HomeShow<List<FindRegionResult>> homeShow) {
             List<FindRegionResult> result = homeShow.getResult();
             RegionAdper regionAdper = new RegionAdper();
             regionAdper.addAll(result);
@@ -87,13 +85,13 @@ public class AreaFragment extends BaseFragment {
 
         @Override
         public void onFail(String mes) {
-            Log.i(TAG, "onFail: "+mes);
+            Log.i(TAG, "onFail: " + mes);
         }
     }
 
-    private class AreaCall implements IBackCall<CinemaByRegion> {
+    private class AreaCall implements IBackCall<HomeShow<List<CinemaByRegionResult>>> {
         @Override
-        public void onSuccess(CinemaByRegion homeShow) {
+        public void onSuccess(HomeShow<List<CinemaByRegionResult>> homeShow) {
             List<CinemaByRegionResult> result = homeShow.getResult();
             AreaAdper areaadper = new AreaAdper();
             areaadper.addAll(result);
@@ -107,5 +105,12 @@ public class AreaFragment extends BaseFragment {
         public void onFail(String mes) {
 
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 }

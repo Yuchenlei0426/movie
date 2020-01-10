@@ -38,8 +38,8 @@ public class NearbyFragment extends BaseFragment {
 
     @Override
     protected void onView(View view) {
-        EventBus.getDefault().register(this);
         unbinder = ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
 
     }
 
@@ -56,12 +56,6 @@ public class NearbyFragment extends BaseFragment {
         nearbyCinemasPreantent.getData(longitude, latitude, 1, 5);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-        unbinder.unbind();
-    }
 
     private class NearbyCinemasCall implements IBackCall<NearbyCinemas> {
         @Override
@@ -81,5 +75,10 @@ public class NearbyFragment extends BaseFragment {
         }
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
+        EventBus.getDefault().unregister(this);
+    }
 }

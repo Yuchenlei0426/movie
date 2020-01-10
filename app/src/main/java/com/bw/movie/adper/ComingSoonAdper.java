@@ -46,11 +46,10 @@ public class ComingSoonAdper extends RecyclerView.Adapter<ComingSoonAdper.Coming
         comingSoonViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailsActivity.class);
-                MovieBus movieBus = new MovieBus();
+                Intent intent = new Intent(v.getContext(),DetailsActivity.class);
                 int movieId = comingSoonResult.get(i).getMovieId();
-                movieBus.setMovieId(movieId);
-                EventBus.getDefault().postSticky(movieBus);
+                String name = comingSoonResult.get(i).getName();
+                EventBus.getDefault().postSticky(new MovieBus(movieId,name));
                 v.getContext().startActivity(intent);
 
             }

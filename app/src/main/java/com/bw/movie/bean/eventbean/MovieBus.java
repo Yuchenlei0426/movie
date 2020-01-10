@@ -2,6 +2,20 @@ package com.bw.movie.bean.eventbean;
 
 public class MovieBus {
     int movieId;
+    String name;
+
+    public MovieBus(int movieId, String name) {
+        this.movieId = movieId;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getMovieId() {
         return movieId;
